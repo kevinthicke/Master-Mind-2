@@ -19,18 +19,27 @@ class Circle{
 const unknownColors = ["red", "blue", "green", "violet"];
 
 var createCircles = () => { 
-
-    for (var index of unknownColors){ 
-        var circle = new Circle(index);
+    for (let index of unknownColors){ 
+        let circle = new Circle(index);
         circle.createCircle();
     }
 }
 
 createCircles();
 
-var changeColorsInCircles = () => {
-    for (var index of unknownColors){
+var getCircles = () => {
+    let arrayOfCircles = [];
+    for (let index of unknownColors){ 
         let circle = document.querySelector(`.${index}`);
+        arrayOfCircles.push(circle);
+    }
+    return arrayOfCircles;
+}
+
+var arrayOfCircles = getCircles();
+
+var changeColorsInCircles = () => {
+    for (var circle of arrayOfCircles){
 
         circle.onclick = function (){
             randomIndex = Math.floor(Math.random()*unknownColors.length);
@@ -41,10 +50,10 @@ var changeColorsInCircles = () => {
 
 changeColorsInCircles();
 
-button.onclick = function(){
+/*button.onclick = function(){
     for (var index of unknownColors){
         let circle = document.querySelector(`.${index}`);
         randomIndex = Math.floor(Math.random()*unknownColors.length);
         circle.style.backgroundColor = unknownColors[randomIndex];
     }
-}
+}*/
